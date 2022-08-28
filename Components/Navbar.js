@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ExploreIcon from '@mui/icons-material/Explore';
 import HomeIcon from '@mui/icons-material/Home';
 import { AuthContext } from '../context/auth';
-
+import Link from 'next/link';
 import Image from 'next/image';
 import otaku from './otaku.jpg'
 
@@ -23,7 +23,7 @@ import { Router, useRouter } from 'next/router';
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({userData}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const {logout} = useContext(AuthContext);
@@ -65,7 +65,7 @@ const ResponsiveAppBar = () => {
              <Tooltip title="Open settings">
             
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="kavascg" src="/static/images/avatar/2.jpg" style ={{height : "2rem", width : "2rem"}} />
+                <Avatar alt="kavascg" src={userData?.photoURL} style ={{height : "2rem", width : "2rem"}} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -86,7 +86,8 @@ const ResponsiveAppBar = () => {
             >
              
                 <MenuItem  onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profile</Typography>
+                    <Link href ="/Profile">
+                  <Typography textAlign="center">Profile</Typography></Link>
                 </MenuItem>
                 <MenuItem  onClick={handlelogout}>
                   <Typography textAlign="center">Logout</Typography>

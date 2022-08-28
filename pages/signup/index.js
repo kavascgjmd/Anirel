@@ -9,7 +9,7 @@ import {useRouter} from 'next/router';
 import { AuthContext } from '../../context/auth';
 import { storage } from '../../Firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from 'firebase/firestore';
+import { arrayUnion, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 import { async } from '@firebase/util';
 function Index() {
@@ -55,7 +55,8 @@ uploadTask.on('state_changed',
         name : name ,
         email : email,
         uid : user.user.uid,
-        photoURL : downloadURL
+        photoURL : downloadURL,
+        posts : [],
 
       }
       await setDoc(doc(db, "users", user.user.uid), obj);
