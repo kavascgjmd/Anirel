@@ -1,6 +1,4 @@
-.container {
-  padding: 0 2rem;
-}
+
 
 .main {
   min-height: 100vh;
@@ -126,4 +124,7 @@
   .logo img {
     filter: invert(1);
   }
+}
+.MuiAppBar-colorDefault{
+  color : black
 }
