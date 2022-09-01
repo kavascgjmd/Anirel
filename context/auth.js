@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { auth } from '../Firebase'
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 export const  AuthContext = React.createContext();
 function AuthWrapper({children}) {
     const [user , setuser] = useState('');
@@ -28,13 +28,18 @@ function AuthWrapper({children}) {
   function forgot(email){
     return sendPasswordResetEmail(email)
   }
+  function signinwithgoogle(){
+    const  provider = new GoogleAuthProvider();
+    return signInWithPopup(auth , provider);
+  }
  
    const store = {
     user, 
     login ,
     signup,
     logout,
-    forgot 
+    forgot ,
+    signinwithgoogle
     
    }
    

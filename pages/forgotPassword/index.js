@@ -14,7 +14,7 @@ function Index() {
   const [error, seterror] = useState('');
   const [loading , setloading] = useState(false);
   const {forgot , user} = useContext(AuthContext);
-
+  const [over , setover] = useState(false);
   useEffect(()=>{
   
     if(user){
@@ -42,17 +42,27 @@ catch(err){
   }
   return (
     <div className='login-container'>
-    <div className ='login-card'>
+      <div className='dance' style ={{height : "20rem", width : "20rem" , position : "relative"}} onMouseEnter={()=>{setover(true)}} onMouseLeave = {()=>{setover(false)}}>
+        {
+          over ?   <Image src = "/zero2.gif" layout='fill'></Image> :   <Image src = "/zero1.gif" layout='fill'></Image>
+        }
+      
+      </div>
+    <div className ='forgot-login-card' style ={{height : "12 rem"}}>
         
-        <div className='otaku' > <div className='otaku-logo'><Image  src={imag} alt="" ></Image></div></div>
+        <div className='otaku' > <div className='error-logo'>
+          {error != '' && <Image src = '/mob_phyco.gif' layout='fill'></Image> 
+}
+          </div></div>
         <div className='textarea'>
     <TextField id="outlined-basic" label="email" variant="outlined" size='small' fullWidth margin='dense' value ={email} onChange={(e)=>{setemail(e.target.value)}}/>
     { error != '' && 
       <div style={{color : "red"}}>{error.message} </div>}
-    <Button variant="contained" fullWidth  style ={{marginTop : "0.5rem"}} onClick = {handleclick} >Send Email</Button>
     </div>
+    <Button color = "warning" variant="contained" fullWidth  style ={{marginTop : "0.5rem"}} onClick = {handleclick} >Send Email</Button>
+
     </div>
-    <div className='bottom-card'>
+    <div className='login-bottom-card'>
      Do not Have an Account?<Link href = "/signup"><span style={{color:'blue'}}>Sign Up</span>
      </Link> </div>
     </div>

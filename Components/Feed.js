@@ -6,15 +6,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { AuthContext } from '../context/auth';
 import { doc, onSnapshot, query, collection ,orderBy} from 'firebase/firestore';
 import { db } from '../Firebase';
+import Counter from './Counter';
 import Post from './Post';
 function Feed() {
     const {user}  = useContext(AuthContext);
     const [userData, setUserData] = useState({});
     const [posts , setPosts] = useState([]);
    useEffect(()=>{
-    console.log(user.uid);
+    
     const unsub = onSnapshot(doc(db, "users", user.uid), (doc)=>{
-        console.log(doc.data());
+  
         setUserData(doc.data());
     })
     return ()=>{
@@ -31,16 +32,46 @@ function Feed() {
            tempArray.push(doc.data())
         })
         setPosts([...tempArray])
-        console.log(tempArray);
+        
     })
     return ()=>{
         unsub();
     }
    }, [])
+
+   const callback = (entries) =>{
+    entries.forEach((entry)=>{
+       
+        
+        let ele = entry.target.childNodes[0];
+        if(ele){
+        let elem = ele.querySelector('video');
+        if(elem){
+        
+            elem.play().then(()=>{
+                if(!elem.paused && !entry.isIntersecting){
+                    elem.pause();
+                }
+            })
+        }
+    }})
+   }
+   useEffect(()=>{
+     const elements = document.querySelectorAll('.videos-cont>*');
+     elements.forEach((element)=>{
+    
+        observer.observe(element)
+     })
+     return ()=>{
+        observer.disconnect();
+     }
+   },[posts])
+   let observer = new IntersectionObserver(callback, {threshold : 0.6});
   return (
     <div className ='Feed-cont'>
    <Navbar userData = {userData}></Navbar>
    <Upload userData = {userData}></Upload>
+  
    <div className='videos-cont'>
     {
         posts.map((post)=>{

@@ -1,18 +1,36 @@
 .login-container{
+    height: 100vh;
+    width : 100vw;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    gap:1rem;
+
     
 }
-.login-card{
+.forgot-login-card{
+    background-color: white;
     padding: 0.5rem;
-    
-    margin-top:7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
     border : 1px solid #ccc;
-    height: 18rem;
+    height: 14rem;
+    width: 25rem;
+}
+
+.login-card{
+    background-color: white;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    border : 1px solid #ccc;
+    height: 20rem;
     width: 25rem;
 }
 .otaku{
@@ -22,12 +40,14 @@
     position: relative;
 
 }
-.otaku-logo{
+.error-logo{
     position: absolute;
-    left: calc((18rem)/2);
-    width: 5rem;
+    left : calc((100% - 8rem)/2);
+    height : 4.3rem;
+    width  : 8rem;
 }
-.bottom-card{
+.login-bottom-card{
+    background-color: white;
     border : 1px solid #ccc;
     display: flex;
     justify-content: center;

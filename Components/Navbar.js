@@ -13,11 +13,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ExploreIcon from '@mui/icons-material/Explore';
+import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
 import HomeIcon from '@mui/icons-material/Home';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { AuthContext } from '../context/auth';
 import Link from 'next/link';
 import Image from 'next/image';
-import otaku from './otaku.jpg'
+import logo from '../public/finallogo.jpg'
 
 import { Router, useRouter } from 'next/router';
 const pages = ['Products', 'Pricing', 'Blog'];
@@ -28,6 +30,8 @@ const ResponsiveAppBar = ({userData}) => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const {logout} = useContext(AuthContext);
   const router = useRouter()
+  const [home , sethome ] = React.useState(false);
+  const [explore , setexplore ] = React.useState(true);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -49,18 +53,39 @@ const ResponsiveAppBar = ({userData}) => {
 
 
   }
+  const handlehome = ()=>{
+    sethome(true);
+    setexplore (false);
+    router.push('/');
+  }
+  const handleexplore =()=>{
+    sethome (false);
+    setexplore(true);
+    router.push('/');
+  }
   return (
     <AppBar position="static" >
       <Container maxWidth="xl" sx = {{backgroundColor  : "black"}}>
         <Toolbar disableGutters sx ={{display : "flex", justifyContent: "space-between" }}>
-         
-             <Image src = {otaku} sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1 }} height = "60px" width = "60px" alt=""/>
+             <span  sx = {{width: "10rem" , display : "flex" , justifyContent : "center"}}>
+
+             <Image src = {logo} sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1 }} height = "60px" width = "60px" alt=""/>
+
+             </span>
          
       
 
           <Box sx={{ flexGrow: 0 }} className  = 'navbar-cont '>
-          <HomeIcon fontSize = "large" className = "nav-icons"></HomeIcon>
-            <ExploreIcon fontSize = "large" className = "nav-icons"></ExploreIcon>
+
+          { home ? <HomeIcon fontSize = "large" className = "nav-icons" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}></HomeIcon> :
+          <HomeOutlinedIcon onClick ={handlehome} fontSize = "large" className = "nav-icons" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}></HomeOutlinedIcon>}
+          {explore ? 
+            <ExploreIcon fontSize = "large" className = "nav-icons" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}></ExploreIcon>
+           :
+           <ExploreOutlinedIcon onClick ={handleexplore} fontSize = "large" className = "nav-icons" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} ></ExploreOutlinedIcon>
+           
+          } 
+            
              
              <Tooltip title="Open settings">
             
@@ -86,8 +111,11 @@ const ResponsiveAppBar = ({userData}) => {
             >
              
                 <MenuItem  onClick={handleCloseUserMenu}>
-                    <Link href ="/Profile">
-                  <Typography textAlign="center">Profile</Typography></Link>
+                   
+                   <Link href ="/Profile">
+                  <Typography textAlign="center" >Profile</Typography></Link>
+                  
+                
                 </MenuItem>
                 <MenuItem  onClick={handlelogout}>
                   <Typography textAlign="center">Logout</Typography>

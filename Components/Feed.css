@@ -3,53 +3,149 @@
     align-items: center;
     justify-content: space-between;
     background-color: black;
-    width : 10rem
+    width : 10rem;
+
 
 }
 .Feed-cont{
     display : flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+ 
+    background-color: #f5f6fa;
 }
-@media only screen and (max-width : 500px){
+.comm-boxo{
+    overflow-y: scroll;
+    gap: 1rem;
+
+}
+@media screen and (max-width : 636px){
     .nav-icons {
         display: none;
     }
     .navbar-cont{
         width : 2rem;
     }
+   .butt{
+     position: static;
+     
+   }
+   .post-cont{
+
+    height : 75vh;
+    width : 24rem;
+    background-color: red;
+    position: relative;
+    margin-top: 1rem;
+}
+.post-cont > video{
+    height : 75vh;
+    width : 24rem;
+    object-fit : contain;
+    background-color: red;
+    
+}
+.post-cont> img{
+    height : 75vh;
+    width : 24rem;
+    object-fit : contain;
+    background-color : red;
+   
 }
 .videos-cont {
-    margin-top: 0.5rem;
-    height: 75vh;
-    border : 1px solid black;
-    border-radius : 15px;
-    overflow-y : scroll;
+  margin-left : 2vw;
+  margin-top: 4rem;
+  height: 88.5vh;
+  width: 24rem;
+  overflow-y : scroll;
+  color : white
 
 }
+.profile-post-cont{
+  position: relative;
+  margin-top: 4rem;
+  height: 20rem;
+  gap: 10rem;
+
+}
+.maihu{
+  margin-left: 2rem;
+  gap: 1rem;
+}
+}
+@media screen and (min-width : 636px)  {
+  .post-cont{
+
+    height : 75vh;
+    width : 30rem;
+    background-color: red;
+    position: relative;
+    margin-top: 1rem;
+}
+.post-cont > video{
+    height : 75vh;
+    width : 30rem;
+    object-fit : contain;
+    background-color: red;
+    
+}
+.post-cont> img{
+    height : 75vh;
+    width : 30rem;
+    object-fit : contain;
+    background-color : red;
+   
+}
+.videos-cont {
+  margin-left : 20vw;
+  margin-top: 0.5rem;
+  height: 88.5vh;
+  width: 30rem;
+  overflow-y : scroll;
+  color : white
+
+}
+.profile-post-cont{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+  gap: 10rem;
+
+}
+.maihu{
+  gap: 1rem;
+}
+}
+  
+
+
+
 .videos-cont::-webkit-scrollbar{
     display : none
 }
 
-.post-cont{
-    height : 75vh;
-    width : 15rem;
-    position: relative;
+.comm-boxo::-webkit-scrollbar{
+  display: none;
 }
-.post-cont > video{
-    height : 75vh;
-    width : 15rem;
-    object-fit : contain;
-    background-color: aqua;
-    border-radius : 15px
+.profile-haihum{
+  
+  height : 20rem ;
+  width : 20rem;
+  object-fit: contain;
+  background-color: black;
+
+  
 }
+
 .info-cont {
     position: absolute;
-    bottom: 10px;
+    top: 0px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    background-color: red;
+    height: 50px;
 }
 .avatar-cont{
     display: flex;
@@ -67,3 +163,115 @@
    justify-content: center;
    margin-right: 5px;
 }
+.comment-bar{
+  display: flex;
+  align-items: center;
+}
+.card1{
+  height: 62vh;
+}
+
+.profile-post-cont > img{
+ 
+  border-radius: 50%;
+
+  margin-left: 20vw;
+}
+
+.nam{
+  font-size: xx-large;
+  font-weight: bold;
+
+}
+.postshu{
+  font-size: x-large;
+}
+@font-face {
+    font-family: 'Mob Psycho 100';
+    src: url('fonts/Mob 200.eot');
+    src: local('☺'), url('fonts/Mob 200.woff') format('woff'), url('fonts/Mob 200.ttf') format('truetype'), url('fonts/Mob 200.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: translate(0px);
+    }
+    33% {
+      transform: translate(1px);
+    }
+    66% {
+      transform: translate(0px);
+    }
+    100% {
+      transform: translate(-1px);
+    }
+  }
+  
+  @keyframes shake-with-blur {
+    0% {
+      transform: translate(0px);
+      filter: none;
+    }
+    33% {
+      transform: translate(2px);
+      filter: blur(2px);
+    }
+    66% {
+      transform: translate(0px);
+      filter: none;
+    }
+    100% {
+      transform: translate(-2px);
+      filter: blur(2px);
+    }
+  }
+  
+  @keyframes shake-with-lots-of-blur {
+    0% {
+      transform: translate(0px);
+      filter: none;
+    }
+    33% {
+      transform: translate(3px);
+      filter: blur(5px);
+    }
+    66% {
+      transform: translate(0px);
+      filter: none;
+    }
+    100% {
+      transform: translate(-3px);
+      filter: blur(5px);
+    }
+  }
+
+  .comment-cont {
+    position: absolute;
+    bottom : 10px;
+    left : 2rem;
+    color : white;
+  }
+  .vi-cont{
+    height : 100%;
+    width : 50%;
+   
+    display: flex;
+
+    justify-content: center;
+  }
+  .vi >*{
+    height : 75vh;
+    width  : 30rem;
+    object-fit : contain;
+   
+  }
+  .mondal{
+    display: flex;
+
+  }
+  .comm-cont{
+    width : 50%;
+    height: 100%;
+  }

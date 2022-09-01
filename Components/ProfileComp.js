@@ -37,21 +37,27 @@ function ProfileComp() {
   return (
     <div>
         <Navbar/>
-        <Image src={otaku} height="80px" width = '80px' alt=""/>
+        <div className='profile-post-cont'>
+        <img src={userData?.photoURL} height="150px" width = '150px' alt=""/>
+        <div className='maihu'>
         <div className = "nam">{userData?.name}</div>
-        <div className='posts'>Post : {userData?.posts?.length}</div>
-        <div className='post-cont' style ={{display : 'flex', flexWrap : "wrap", justifyContent: 'space-between'}}>
+        <div className='postshu'>Post : <span style={{fontWeight : "bold" , fontSize : "x-large"}}>{userData?.posts?.length}</span></div>
+        </div>
+       
+        </div>
+        
+        <div  style ={{display : 'flex', flexWrap : "wrap", justifyContent: 'center', backgroundColor : 'white', gap: '3rem'}}>
      {
         posts.map((post)=>(
             <>
             {
-                post.type === "video" ?     <video src ={post.postURL}  loop = 'infinte'></video> : <></>
+                post.type === "video" ?     <video className='profile-haihum' src ={post.postURL} autoPlay ={true} loop = 'infinte'></video> : <></>
                }
                {
-                   post.type === "image" ? <img src={post.postURL} alt ="kavascg" width= "100%"  />:<></>
+                   post.type === "image" ? <img className='profile-haihum' src={post.postURL} alt ="kavascg" width= "100%"  />:<></>
                }
                {
-                   post.type === "audio" ? <audio src ={post.postURL} autoPlay = {true} />: <></>
+                   post.type === "audio" ? <audio className='profile-haihum' src ={post.postURL} autoPlay = {true} />: <></>
                }
                </>
          
