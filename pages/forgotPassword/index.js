@@ -44,14 +44,14 @@ catch(err){
     <div className='login-container'>
       <div className='dance' style ={{height : "20rem", width : "20rem" , position : "relative"}} onMouseEnter={()=>{setover(true)}} onMouseLeave = {()=>{setover(false)}}>
         {
-          over ?   <Image src = "/zero2.gif" layout='fill'></Image> :   <Image src = "/zero1.gif" layout='fill'></Image>
+          over ?   <Image src = "/zero2.gif" layout='fill' alt = ''></Image> :   <Image src = "/zero1.gif" layout='fill' alt = ''></Image>
         }
       
       </div>
     <div className ='forgot-login-card' style ={{height : "12 rem"}}>
         
         <div className='otaku' > <div className='error-logo'>
-          {error != '' && <Image src = '/mob_phyco.gif' layout='fill'></Image> 
+          {error != '' && <Image src = '/mob_phyco.gif' layout='fill' alt =''></Image> 
 }
           </div></div>
         <div className='textarea'>

@@ -46,11 +46,11 @@ function Index() {
         console.log("doc added");
       }
       catch(err){
-        console.log(err);
-        seterror(err);
+        console.log(err.message);
+        seterror(err.message);
         setTimeout(()=>{
         seterror('');
-        }, 2000
+        }, 5000
         )
       }
      setloading(false);
@@ -82,7 +82,7 @@ uploadTask.on('state_changed',
     console.log('Upload is ' + progress + '% done');
   }, 
   (error) => {
-    console.log(error)
+    console.log(error.message)
   }, 
   () => {
    getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
@@ -103,8 +103,8 @@ uploadTask.on('state_changed',
 
         }
         catch(err){
-          console.log(err);
-          seterror(err);
+          console.log(err.message);
+          seterror(err.message);
           setTimeout(()=>{
           seterror('');
           }, 2000
@@ -128,9 +128,9 @@ uploadTask.on('state_changed',
       <div className='card-cont'>
     <div className ='signup-card'>
         
-        <div className='otaku' > <div className='otaku-logo'><Image src = "/finallogo.jpg" layout = "fill"></Image></div></div>
-    <Button  color = "warning" variant="contained" fullWidth  style ={{marginTop : "0.5rem", textTransform : "none", fontFamily: 'monospace'}} onClick={signingoogle} disabled = {loading} size = "small" margin="dense">Sign up with google</Button>
-       
+        <div className='otaku' > <div className='otaku-logo'><Image src = "/finallogo.jpg" layout = "fill" alt =""></Image></div></div>
+    {error === '' && <Button  color = "warning" variant="contained" fullWidth  style ={{marginTop : "0.5rem", textTransform : "none", fontFamily: 'monospace'}} onClick={signingoogle} disabled = {loading} size = "small" margin="dense">Sign up with google</Button>
+} 
         <div className='textarea'>
     <TextField color = "warning" inputProps ={{style : {fontSize : 10}}} InputLabelProps ={{style : {fontSize : 10, fontFamily : 'monospace '}}} sx= {{outline : "none", textTransform : "none"}} id="outlined-basic" label="email" variant="outlined" size='small' fullWidth margin='dense' value = {email} onChange = {(e)=>{setemail(e.target.value)}} />
     <TextField color = "warning" inputProps ={{style : {fontSize : 10}}} InputLabelProps ={{style : {fontSize : 10, fontFamily : 'monospace '}}} id="outlined-basic" label="password" variant="outlined" size='small' fullWidth margin='dense' value = {password} onChange = {(e)=>{setpassword(e.target.value)}}/>
@@ -139,7 +139,9 @@ uploadTask.on('state_changed',
     
     </div>
     <Button color = "warning" style = {{ fontFamily: 'monospace', outline : "none", textTransform : "none",marginTop : '0.5rem'}} variant="contained" fullWidth   onClick={handleclick} disabled = {loading} size = "small" margin="dense">Sign Up</Button>
-
+   
+    { error != '' && 
+      <div style={{color : "blue"}}>{error} </div>}
     </div>
     <div className='bottom-card' style ={{width : "18rem" , fontSize : 10 , fontFamily : "monospace"}}>
      Already Have an Account? <Link href = "/login"><span style={{color:'red'}}>Login</span></Link>
